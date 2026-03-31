@@ -8,59 +8,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --saffron: #FF6B35;
-            --gold: #FFD700;
-            --deep-orange: #E65100;
-            --cream: #FFF8E7;
-            --dark-text: #3E2723;
-            --white: #ffffff;
-            --whatsapp-green: #25D366;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --saffron: #FF6B35; --gold: #FFD700; --deep-orange: #E65100;
+            --cream: #FFF8E7; --dark-text: #3E2723; --white: #ffffff;
+            --whatsapp-green: #25D366; --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Lato', sans-serif; background-color: var(--cream); color: var(--dark-text); line-height: 1.6; overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Cinzel', serif; color: var(--deep-orange); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Lato',sans-serif; background-color:var(--cream); color:var(--dark-text); line-height:1.6; overflow-x:hidden; }
+        h1,h2,h3 { font-family:'Cinzel',serif; color:var(--deep-orange); }
 
-        /* LANGUAGE TOGGLE */
-        .lang-switch { position: fixed; top: 80px; right: 20px; z-index: 2000; background: var(--white); border: 2px solid var(--saffron); border-radius: 50px; padding: 5px; display: flex; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
-        .lang-btn { padding: 5px 15px; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 0.8rem; transition: var(--transition); border: none; background: transparent; }
-        .lang-btn.active { background: var(--saffron); color: white; }
+        .lang-switch { position:fixed; top:80px; right:20px; z-index:2000; background:var(--white); border:2px solid var(--saffron); border-radius:50px; padding:5px; display:flex; box-shadow:0 4px 10px rgba(0,0,0,0.15); }
+        .lang-btn { padding:5px 15px; border-radius:25px; cursor:pointer; font-weight:bold; font-size:0.8rem; transition:var(--transition); border:none; background:transparent; }
+        .lang-btn.active { background:var(--saffron); color:white; }
 
-        /* ANIMATIONS */
-        @keyframes glow { 0%,100%{ filter: drop-shadow(0 0 5px var(--gold)); } 50%{ filter: drop-shadow(0 0 22px var(--saffron)); } }
-        @keyframes float { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-10px); } }
+        @keyframes glow { 0%,100%{ filter:drop-shadow(0 0 5px var(--gold)); } 50%{ filter:drop-shadow(0 0 22px var(--saffron)); } }
+        @keyframes float { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
         @keyframes petalFall { 0%{ transform:translateY(-10vh) rotate(0deg); opacity:0; } 10%{ opacity:.8; } 100%{ transform:translateY(100vh) rotate(360deg); opacity:0; } }
         @keyframes fadeInUp { from{ opacity:0; transform:translateY(28px); } to{ opacity:1; transform:translateY(0); } }
-        @keyframes waPulse { 0%,100%{ box-shadow: 0 0 0 0 rgba(37,211,102,0.5); } 70%{ box-shadow: 0 0 0 14px rgba(37,211,102,0); } }
+        @keyframes waPulse { 0%,100%{ box-shadow:0 0 0 0 rgba(37,211,102,0.5); } 70%{ box-shadow:0 0 0 14px rgba(37,211,102,0); } }
         @keyframes modalIn { from{ opacity:0; transform:scale(0.85); } to{ opacity:1; transform:scale(1); } }
+        @keyframes marqueeText { 0%{ transform:translateX(60vw); } 100%{ transform:translateX(-100%); } }
 
-        /* PETALS */
-        .petals-container { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
-        .petal { position:absolute; background:#ffb7c5; border-radius:150% 0 150% 0; width:12px; height:12px; opacity:.7; animation: petalFall 10s linear infinite; }
+        .petals-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+        .petal { position:absolute; background:#ffb7c5; border-radius:150% 0 150% 0; width:12px; height:12px; opacity:.7; animation:petalFall 10s linear infinite; }
 
-        /* HEADER */
-        header { background: rgba(255,248,231,0.97); padding: 1rem 4%; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
-        .logo-text { font-size: 1rem; font-weight: 700; color: var(--deep-orange); text-transform: uppercase; font-family: 'Cinzel'; }
-        nav ul { display: flex; list-style: none; gap: 6px; flex-wrap: wrap; }
-        nav a { text-decoration: none; color: var(--dark-text); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; transition: var(--transition); padding: 5px 8px; border-radius: 5px; }
-        nav a:hover { color: var(--saffron); background: rgba(255,107,53,0.08); }
-        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--deep-orange); }
+        header { background:rgba(255,248,231,0.97); padding:1rem 4%; position:fixed; width:100%; top:0; z-index:1000; box-shadow:0 2px 12px rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center; }
+        .logo-text { font-size:1rem; font-weight:700; color:var(--deep-orange); text-transform:uppercase; font-family:'Cinzel'; }
+        nav ul { display:flex; list-style:none; gap:6px; flex-wrap:wrap; }
+        nav a { text-decoration:none; color:var(--dark-text); font-weight:700; font-size:0.72rem; text-transform:uppercase; transition:var(--transition); padding:5px 8px; border-radius:5px; }
+        nav a:hover { color:var(--saffron); background:rgba(255,107,53,0.08); }
+        .mobile-menu-btn { display:none; font-size:1.5rem; cursor:pointer; color:var(--deep-orange); }
 
-        /* HERO */
-        .hero { min-height: 90vh; background: linear-gradient(rgba(0,0,0,0.58),rgba(0,0,0,0.58)), url('images/banner.jpg') center/cover no-repeat; background-color: #7B3F00; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 110px 20px 60px; color: var(--white); }
-        .om-symbol { font-size: 6rem; color: var(--gold); animation: glow 3s ease-in-out infinite; margin-bottom: 20px; background: transparent; -webkit-text-fill-color: var(--gold); line-height: 1; }
-        .hero h1 { font-size: 2.8rem; color: var(--gold); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-bottom: 8px; }
-        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
-        .tagline { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--saffron); background: rgba(0,0,0,0.4); padding: 10px 30px; border-radius: 50px; border: 1px solid var(--gold); margin-top: 18px; }
+        .hero { min-height:90vh; background:linear-gradient(rgba(0,0,0,0.58),rgba(0,0,0,0.58)), url('images/banner.jpg') center/cover no-repeat; background-color:#7B3F00; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:110px 20px 60px; color:var(--white); }
+        .om-symbol { font-size:6rem; color:var(--gold); animation:glow 3s ease-in-out infinite; margin-bottom:20px; -webkit-text-fill-color:var(--gold); line-height:1; }
+        .hero h1 { font-size:2.8rem; color:var(--gold); text-shadow:2px 2px 10px rgba(0,0,0,0.5); margin-bottom:8px; }
+        .hero-sub { font-size:1rem; color:rgba(255,255,255,0.8); margin-bottom:8px; }
+        .tagline { font-family:'Cinzel',serif; font-size:1.5rem; color:var(--saffron); background:rgba(0,0,0,0.4); padding:10px 30px; border-radius:50px; border:1px solid var(--gold); margin-top:18px; }
 
-        /* SECTIONS */
-        section { padding: 65px 10%; position: relative; z-index: 2; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
-        .section-title::after { content: 'ॐ'; display: block; font-size: 1.4rem; color: var(--saffron); margin-top: 5px; }
+        section { padding:65px 10%; position:relative; z-index:2; }
+        .section-title { text-align:center; font-size:2.2rem; margin-bottom:40px; }
+        .section-title::after { content:'ॐ'; display:block; font-size:1.4rem; color:var(--saffron); margin-top:5px; }
 
         /* ABOUT */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .history-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15); min-height: 320px; background: linear-gradient(135deg,#FCE4EC,#FFF3E0); display: flex; align-items: center; justify-content: center; }
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+        .history-img-wrap { border-radius:20px; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.15); min-height:320px; background:linear-gradient(135deg,#FCE4EC,#FFF3E0); display:flex; align-items:center; justify-content:center; }
         .history-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
         .img-fallback { display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px; color:var(--deep-orange); gap:10px; }
         .img-fallback i { font-size:3.5rem; opacity:.4; }
@@ -68,210 +58,185 @@
         .img-fallback code { background:rgba(0,0,0,0.06); padding:2px 6px; border-radius:4px; font-size:0.78rem; }
 
         /* TIMINGS */
-        .timings-tabs { display: flex; gap: 12px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
-        .timing-tab { padding: 10px 28px; border-radius: 50px; border: 2px solid var(--saffron); background: transparent; color: var(--deep-orange); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: var(--transition); font-family: 'Cinzel'; }
-        .timing-tab.active { background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); color: white; border-color: transparent; box-shadow: 0 4px 14px rgba(255,107,53,0.35); }
-        .timing-tab:hover:not(.active) { background: rgba(255,107,53,0.08); }
-        .timing-panel { display: none; }
-        .timing-panel.active { display: block; }
-        .timing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px,1fr)); gap: 16px; }
-        .time-card { background: var(--white); padding: 22px 16px; border-radius: 16px; text-align: center; box-shadow: 0 5px 16px rgba(0,0,0,0.06); border-bottom: 4px solid var(--gold); transition: var(--transition); }
-        .time-card:hover { transform: translateY(-5px); border-bottom-color: var(--saffron); }
-        .time-card i { font-size: 1.6rem; color: var(--saffron); margin-bottom: 10px; }
-        .time-card h3 { font-size: 0.9rem; margin-bottom: 5px; }
-        .time-card p { font-size: 0.82rem; color: #555; }
-        .timing-note { text-align: center; margin-top: 18px; font-size: 0.82rem; color: #888; font-style: italic; }
+        .timings-tabs { display:flex; gap:12px; justify-content:center; margin-bottom:28px; flex-wrap:wrap; }
+        .timing-tab { padding:10px 28px; border-radius:50px; border:2px solid var(--saffron); background:transparent; color:var(--deep-orange); font-weight:700; font-size:0.9rem; cursor:pointer; transition:var(--transition); font-family:'Cinzel'; }
+        .timing-tab.active { background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); color:white; border-color:transparent; box-shadow:0 4px 14px rgba(255,107,53,0.35); }
+        .timing-tab:hover:not(.active) { background:rgba(255,107,53,0.08); }
+        .timing-panel { display:none; }
+        .timing-panel.active { display:block; }
+        .timing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(175px,1fr)); gap:16px; }
+        .time-card { background:var(--white); padding:22px 16px; border-radius:16px; text-align:center; box-shadow:0 5px 16px rgba(0,0,0,0.06); border-bottom:4px solid var(--gold); transition:var(--transition); }
+        .time-card:hover { transform:translateY(-5px); border-bottom-color:var(--saffron); }
+        .time-card i { font-size:1.6rem; color:var(--saffron); margin-bottom:10px; }
+        .time-card h3 { font-size:0.9rem; margin-bottom:5px; }
+        .time-card p { font-size:0.82rem; color:#555; }
+        .timing-note { text-align:center; margin-top:18px; font-size:0.82rem; color:#888; font-style:italic; }
 
         /* FESTIVALS */
-        .festivals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 20px; }
-        .festival-card { background: var(--white); border-radius: 18px; padding: 28px 20px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-top: 5px solid var(--gold); transition: var(--transition); animation: fadeInUp 0.5s ease both; }
-        .festival-card:hover { transform: translateY(-7px); box-shadow: 0 14px 32px rgba(230,81,0,0.14); border-top-color: var(--saffron); }
-        .festival-icon { font-size: 2.6rem; margin-bottom: 12px; }
-        .festival-card h3 { font-size: 1rem; color: var(--deep-orange); margin-bottom: 6px; font-family: 'Cinzel'; }
-        .festival-card p { font-size: 0.82rem; color: #666; line-height: 1.5; }
-        .festival-date { display: inline-block; background: linear-gradient(90deg, var(--saffron), var(--gold)); color: white; font-size: 0.72rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; margin-top: 10px; }
+        .festivals-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px; }
+        .festival-card { background:var(--white); border-radius:18px; padding:28px 20px; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,0.07); border-top:5px solid var(--gold); transition:var(--transition); animation:fadeInUp 0.5s ease both; }
+        .festival-card:hover { transform:translateY(-7px); box-shadow:0 14px 32px rgba(230,81,0,0.14); border-top-color:var(--saffron); }
+        .festival-icon { font-size:2.6rem; margin-bottom:12px; }
+        .festival-card h3 { font-size:1rem; color:var(--deep-orange); margin-bottom:6px; font-family:'Cinzel'; }
+        .festival-card p { font-size:0.82rem; color:#666; line-height:1.5; }
+        .festival-date { display:inline-block; background:linear-gradient(90deg,var(--saffron),var(--gold)); color:white; font-size:0.72rem; font-weight:700; padding:3px 12px; border-radius:20px; margin-top:10px; }
 
         /* SERVICES */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 22px; }
-        .service-card { background: linear-gradient(135deg,#FFFDE7,#FFF8E1); border: 2px solid #FFE082; border-radius: 18px; padding: 30px 22px; text-align: center; transition: var(--transition); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
-        .service-card:hover { transform: translateY(-5px); border-color: var(--saffron); box-shadow: 0 12px 28px rgba(255,107,53,0.13); }
-        .service-icon { width: 64px; height: 64px; background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.6rem; color: white; box-shadow: 0 4px 12px rgba(230,81,0,0.3); }
-        .service-card h3 { font-size: 1.05rem; color: var(--deep-orange); margin-bottom: 8px; font-family: 'Cinzel'; }
-        .service-card p { font-size: 0.85rem; color: #555; line-height: 1.6; }
-        .service-badge { display: inline-block; background: #E8F5E9; color: #2E7D32; font-size: 0.72rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; margin-top: 10px; border: 1px solid #A5D6A7; }
-        .services-quote { text-align: center; margin-top: 35px; padding: 25px 40px; background: linear-gradient(135deg,rgba(255,107,53,0.07),rgba(255,215,0,0.1)); border-radius: 16px; border-left: 5px solid var(--gold); font-family: 'Cinzel'; font-size: 1.05rem; color: var(--deep-orange); font-style: italic; }
+        .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:22px; }
+        .service-card { background:linear-gradient(135deg,#FFFDE7,#FFF8E1); border:2px solid #FFE082; border-radius:18px; padding:30px 22px; text-align:center; transition:var(--transition); box-shadow:0 4px 16px rgba(0,0,0,0.05); }
+        .service-card:hover { transform:translateY(-5px); border-color:var(--saffron); box-shadow:0 12px 28px rgba(255,107,53,0.13); }
+        .service-icon { width:64px; height:64px; background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 15px; font-size:1.6rem; color:white; box-shadow:0 4px 12px rgba(230,81,0,0.3); }
+        .service-card h3 { font-size:1.05rem; color:var(--deep-orange); margin-bottom:8px; font-family:'Cinzel'; }
+        .service-card p { font-size:0.85rem; color:#555; line-height:1.6; }
+        .service-badge { display:inline-block; background:#E8F5E9; color:#2E7D32; font-size:0.72rem; font-weight:700; padding:3px 12px; border-radius:20px; margin-top:10px; border:1px solid #A5D6A7; }
+        .services-quote { text-align:center; margin-top:35px; padding:25px 40px; background:linear-gradient(135deg,rgba(255,107,53,0.07),rgba(255,215,0,0.1)); border-radius:16px; border-left:5px solid var(--gold); font-family:'Cinzel'; font-size:1.05rem; color:var(--deep-orange); font-style:italic; }
 
         /* GALLERY */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 15px; }
-        .gallery-item { height: 220px; overflow: hidden; border-radius: 14px; cursor: pointer; position: relative; background: linear-gradient(135deg,#FCE4EC,#FFF3E0); box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: var(--transition); }
-        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 24px rgba(0,0,0,0.14); }
-        .gallery-item img { width:100%; height:100%; object-fit:cover; transition: var(--transition); }
-        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:15px; }
+        .gallery-item { height:220px; overflow:hidden; border-radius:14px; cursor:pointer; position:relative; background:linear-gradient(135deg,#FCE4EC,#FFF3E0); box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:var(--transition); }
+        .gallery-item:hover { transform:scale(1.02); box-shadow:0 10px 24px rgba(0,0,0,0.14); }
+        .gallery-item img { width:100%; height:100%; object-fit:cover; transition:var(--transition); }
+        .gallery-item:hover img { transform:scale(1.08); }
         .gallery-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:var(--saffron); font-size:0.75rem; text-align:center; padding:12px; gap:6px; }
         .gallery-placeholder i { font-size:2.2rem; opacity:.4; }
 
-        /* WHATSAPP FLOATING */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp-green); color: white; width: 64px; height: 64px; border-radius: 50%; font-size: 32px; box-shadow: 0 4px 20px rgba(37,211,102,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: float 3s ease-in-out infinite, waPulse 2.5s infinite; transition: var(--transition); }
-        .whatsapp-float:hover { transform: scale(1.12) translateY(-4px); background: #1ebe58; }
-        .whatsapp-float::before { content: "Chat on WhatsApp"; position: absolute; right: 74px; background: #333; color: #fff; font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; white-space: nowrap; opacity: 0; transition: var(--transition); pointer-events: none; }
-        .whatsapp-float:hover::before { opacity: 1; }
+        .whatsapp-float { position:fixed; bottom:30px; right:30px; background:var(--whatsapp-green); color:white; width:64px; height:64px; border-radius:50%; font-size:32px; box-shadow:0 4px 20px rgba(37,211,102,0.5); z-index:9999; display:flex; align-items:center; justify-content:center; text-decoration:none; animation:float 3s ease-in-out infinite, waPulse 2.5s infinite; transition:var(--transition); }
+        .whatsapp-float:hover { transform:scale(1.12) translateY(-4px); background:#1ebe58; }
+        .whatsapp-float::before { content:"Chat on WhatsApp"; position:absolute; right:74px; background:#333; color:#fff; font-size:0.75rem; padding:5px 12px; border-radius:20px; white-space:nowrap; opacity:0; transition:var(--transition); pointer-events:none; }
+        .whatsapp-float:hover::before { opacity:1; }
 
         /* REACH US */
-        .reach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
-        .dist-list { list-style: none; }
-        .dist-list li { padding: 12px 14px; background: white; margin-bottom: 9px; border-radius: 10px; display: flex; justify-content: space-between; border-left: 5px solid var(--saffron); font-size: 0.9rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .dist-list li span:last-child { font-weight: 700; color: var(--deep-orange); }
-        .map-wrapper { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.13); border: 4px solid var(--gold); }
+        .reach-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start; }
+        .dist-list { list-style:none; }
+        .dist-list li { padding:12px 14px; background:white; margin-bottom:9px; border-radius:10px; display:flex; justify-content:space-between; border-left:5px solid var(--saffron); font-size:0.9rem; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .dist-list li span:last-child { font-weight:700; color:var(--deep-orange); }
+        .map-wrapper { border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.13); border:4px solid var(--gold); }
         .map-wrapper iframe { width:100%; height:380px; border:0; display:block; }
-        .map-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-        .map-btn { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: var(--transition); }
-        .map-btn-google { background: #4285F4; color: white; }
-        .map-btn-google:hover { background: #1a73e8; transform: translateY(-2px); }
-        .map-btn-waze { background: #00B5F5; color: white; }
-        .map-btn-waze:hover { background: #009fd9; transform: translateY(-2px); }
-        .reach-info-box { background: white; border-radius: 14px; padding: 20px; margin-top: 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); border-top: 3px solid var(--saffron); }
-        .reach-info-box p { font-size: 0.88rem; color: #555; margin-bottom: 8px; }
-        .reach-info-box p i { color: var(--saffron); margin-right: 7px; width: 16px; }
+        .map-actions { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+        .map-btn { display:flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px; text-decoration:none; font-size:0.85rem; font-weight:700; transition:var(--transition); }
+        .map-btn-google { background:#4285F4; color:white; }
+        .map-btn-google:hover { background:#1a73e8; transform:translateY(-2px); }
+        .map-btn-waze { background:#00B5F5; color:white; }
+        .map-btn-waze:hover { background:#009fd9; transform:translateY(-2px); }
+        .reach-info-box { background:white; border-radius:14px; padding:20px; margin-top:20px; box-shadow:0 4px 14px rgba(0,0,0,0.06); border-top:3px solid var(--saffron); }
+        .reach-info-box p { font-size:0.88rem; color:#555; margin-bottom:8px; }
+        .reach-info-box p i { color:var(--saffron); margin-right:7px; width:16px; }
 
         /* CONTACT */
-        .contact-box { background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); max-width: 650px; margin: 0 auto; text-align: center; }
-        .contact-address { font-size: 0.95rem; color: #555; margin-bottom: 22px; }
-        .contact-address i { color: var(--saffron); margin-right: 8px; }
-        .contact-numbers { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
-        .contact-number-row { display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--cream); border-radius: 14px; padding: 14px 20px; border: 1px solid #FFE082; flex-wrap: wrap; }
-        .contact-number-label { font-weight: 700; font-size: 1rem; color: var(--dark-text); flex: 1; text-align: left; min-width: 150px; }
-        .contact-number-label i { color: var(--saffron); margin-right: 8px; }
-        .mini-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: var(--transition); white-space: nowrap; }
-        .mini-call { background: var(--saffron); color: white; }
-        .mini-call:hover { background: var(--deep-orange); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,107,53,0.4); }
-        .mini-wa { background: var(--whatsapp-green); color: white; }
-        .mini-wa:hover { background: #1ebe58; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,211,102,0.4); }
-        .contact-dir-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; background: #4285F4; color: white; transition: var(--transition); margin-top: 6px; }
-        .contact-dir-btn:hover { background: #1a73e8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(66,133,244,0.4); }
+        .contact-box { background:white; padding:40px 30px; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.08); max-width:650px; margin:0 auto; text-align:center; }
+        .contact-address { font-size:0.95rem; color:#555; margin-bottom:22px; }
+        .contact-address i { color:var(--saffron); margin-right:8px; }
+        .contact-numbers { display:flex; flex-direction:column; gap:14px; margin-bottom:24px; }
+        .contact-number-row { display:flex; align-items:center; justify-content:center; gap:12px; background:var(--cream); border-radius:14px; padding:14px 20px; border:1px solid #FFE082; flex-wrap:wrap; }
+        .contact-number-label { font-weight:700; font-size:1rem; color:var(--dark-text); flex:1; text-align:left; min-width:150px; }
+        .contact-number-label i { color:var(--saffron); margin-right:8px; }
+        .mini-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:50px; text-decoration:none; font-size:0.8rem; font-weight:700; transition:var(--transition); white-space:nowrap; }
+        .mini-call { background:var(--saffron); color:white; }
+        .mini-call:hover { background:var(--deep-orange); transform:translateY(-2px); box-shadow:0 4px 12px rgba(255,107,53,0.4); }
+        .mini-wa { background:var(--whatsapp-green); color:white; }
+        .mini-wa:hover { background:#1ebe58; transform:translateY(-2px); box-shadow:0 4px 12px rgba(37,211,102,0.4); }
+        .contact-dir-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 28px; border-radius:50px; text-decoration:none; font-weight:700; font-size:0.9rem; background:#4285F4; color:white; transition:var(--transition); margin-top:6px; }
+        .contact-dir-btn:hover { background:#1a73e8; transform:translateY(-2px); box-shadow:0 6px 16px rgba(66,133,244,0.4); }
 
         /* APPOINTMENT */
-        .appt-card { background: white; border-radius: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); max-width: 700px; margin: 0 auto; border: 2px solid #FFE082; overflow: hidden; }
-        .appt-trigger { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; cursor: pointer; background: linear-gradient(135deg, #FFF8E1, #FFF3CD); transition: var(--transition); user-select: none; }
-        .appt-trigger:hover { background: linear-gradient(135deg, #FFE0B2, #FFCC80); }
-        .appt-trigger.open { background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); }
-        .appt-trigger.open .appt-trigger-title,
-        .appt-trigger.open .appt-trigger-sub { color: white; }
-        .appt-trigger.open .appt-chevron { color: white; transform: rotate(180deg); }
-        .appt-trigger.open .appt-trigger-badge { background: rgba(255,255,255,0.2); box-shadow: none; }
-        .appt-trigger-left { display: flex; align-items: center; gap: 16px; }
-        .appt-trigger-badge { width: 48px; height: 48px; background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: white; box-shadow: 0 4px 12px rgba(255,107,53,0.35); flex-shrink: 0; transition: var(--transition); }
-        .appt-trigger-title { font-family: 'Cinzel'; color: var(--deep-orange); font-size: 1rem; margin-bottom: 3px; transition: var(--transition); }
-        .appt-trigger-sub { font-size: 0.76rem; color: #999; transition: var(--transition); }
-        .appt-chevron { font-size: 1.2rem; color: var(--saffron); transition: var(--transition); }
-        .appt-body { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1); }
-        .appt-body.open { max-height: 1600px; }
-        .appt-body-inner { padding: 28px 30px 36px; border-top: 2px solid #FFE082; }
-        .appt-sub { font-size: 0.85rem; color: #888; margin-bottom: 24px; text-align: center; }
+        .appt-card { background:white; border-radius:24px; box-shadow:0 8px 30px rgba(0,0,0,0.08); max-width:700px; margin:0 auto; border:2px solid #FFE082; overflow:hidden; }
+        .appt-trigger { display:flex; align-items:center; justify-content:space-between; padding:22px 28px; cursor:pointer; background:linear-gradient(135deg,#FFF8E1,#FFF3CD); transition:var(--transition); user-select:none; }
+        .appt-trigger:hover { background:linear-gradient(135deg,#FFE0B2,#FFCC80); }
+        .appt-trigger.open { background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); }
+        .appt-trigger.open .appt-trigger-title, .appt-trigger.open .appt-trigger-sub { color:white; }
+        .appt-trigger.open .appt-chevron { color:white; transform:rotate(180deg); }
+        .appt-trigger.open .appt-trigger-badge { background:rgba(255,255,255,0.2); box-shadow:none; }
+        .appt-trigger-left { display:flex; align-items:center; gap:16px; }
+        .appt-trigger-badge { width:48px; height:48px; background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:white; box-shadow:0 4px 12px rgba(255,107,53,0.35); flex-shrink:0; transition:var(--transition); }
+        .appt-trigger-title { font-family:'Cinzel'; color:var(--deep-orange); font-size:1rem; margin-bottom:3px; transition:var(--transition); }
+        .appt-trigger-sub { font-size:0.76rem; color:#999; transition:var(--transition); }
+        .appt-chevron { font-size:1.2rem; color:var(--saffron); transition:var(--transition); }
+        .appt-body { max-height:0; overflow:hidden; transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1); }
+        .appt-body.open { max-height:1600px; }
+        .appt-body-inner { padding:28px 30px 36px; border-top:2px solid #FFE082; }
+        .appt-sub { font-size:0.85rem; color:#888; margin-bottom:24px; text-align:center; }
 
-        /* FORMS */
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
-        .form-group.full { grid-column: 1 / -1; }
-        .form-group label { font-size: 0.82rem; font-weight: 700; color: var(--dark-text); text-transform: uppercase; letter-spacing: 0.05em; }
-        .form-group label i { color: var(--saffron); margin-right: 5px; }
-        .form-control { padding: 11px 14px; border: 2px solid #E0D5C5; border-radius: 10px; font-size: 0.9rem; font-family: 'Lato'; color: var(--dark-text); background: #FFFEF8; transition: var(--transition); outline: none; width: 100%; }
-        .form-control:focus { border-color: var(--saffron); box-shadow: 0 0 0 3px rgba(255,107,53,0.12); }
-        select.form-control { cursor: pointer; }
-        .submit-btn { width: 100%; margin-top: 22px; padding: 14px; background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: 700; font-family: 'Lato'; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,53,0.4); }
-        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+        .form-group { display:flex; flex-direction:column; gap:6px; }
+        .form-group.full { grid-column:1 / -1; }
+        .form-group label { font-size:0.82rem; font-weight:700; color:var(--dark-text); text-transform:uppercase; letter-spacing:0.05em; }
+        .form-group label i { color:var(--saffron); margin-right:5px; }
+        .form-control { padding:11px 14px; border:2px solid #E0D5C5; border-radius:10px; font-size:0.9rem; font-family:'Lato'; color:var(--dark-text); background:#FFFEF8; transition:var(--transition); outline:none; width:100%; }
+        .form-control:focus { border-color:var(--saffron); box-shadow:0 0 0 3px rgba(255,107,53,0.12); }
+        select.form-control { cursor:pointer; }
+        .submit-btn { width:100%; margin-top:22px; padding:14px; background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); color:white; border:none; border-radius:50px; font-size:1rem; font-weight:700; font-family:'Lato'; cursor:pointer; transition:var(--transition); display:flex; align-items:center; justify-content:center; gap:10px; }
+        .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,107,53,0.4); }
+        .submit-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
 
         /* FEEDBACK */
-        .feedback-card { background: white; border-radius: 24px; padding: 40px 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); max-width: 700px; margin: 0 auto; border-top: 6px solid var(--saffron); }
-        .star-rating { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
-        .star-rating i { font-size: 2rem; color: #ddd; cursor: pointer; transition: var(--transition); }
-        .star-rating i.active { color: var(--gold); transform: scale(1.15); }
-        .feedback-submit { width: 100%; margin-top: 18px; padding: 14px; background: linear-gradient(135deg, var(--deep-orange), #B71C1C); color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: 700; font-family: 'Lato'; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .feedback-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,81,0,0.35); }
-        .feedback-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .feedback-card { background:white; border-radius:24px; padding:40px 36px; box-shadow:0 8px 30px rgba(0,0,0,0.08); max-width:700px; margin:0 auto; border-top:6px solid var(--saffron); }
+        .star-rating { display:flex; gap:8px; justify-content:center; margin-bottom:20px; }
+        .star-rating i { font-size:2rem; color:#ddd; cursor:pointer; transition:var(--transition); }
+        .star-rating i.active { color:var(--gold); transform:scale(1.15); }
+        .feedback-submit { width:100%; margin-top:18px; padding:14px; background:linear-gradient(135deg,var(--deep-orange),#B71C1C); color:white; border:none; border-radius:50px; font-size:1rem; font-weight:700; font-family:'Lato'; cursor:pointer; transition:var(--transition); display:flex; align-items:center; justify-content:center; gap:10px; }
+        .feedback-submit:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(230,81,0,0.35); }
+        .feedback-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
 
         /* MODAL */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .modal-overlay.show { display: flex; }
-        .modal-box { background: white; border-radius: 24px; padding: 40px 36px; max-width: 460px; width: 100%; text-align: center; animation: modalIn 0.35s ease; }
-        .modal-icon { font-size: 4rem; margin-bottom: 16px; }
-        .modal-box h3 { font-family: 'Cinzel'; color: var(--deep-orange); font-size: 1.4rem; margin-bottom: 10px; }
-        .modal-box p { font-size: 0.9rem; color: #666; line-height: 1.7; margin-bottom: 6px; }
-        .modal-detail-box { background: var(--cream); border-radius: 12px; padding: 16px 20px; margin: 16px 0; text-align: left; font-size: 0.85rem; }
-        .modal-detail-box div { padding: 5px 0; border-bottom: 1px solid #EEE; display: flex; gap: 10px; }
-        .modal-detail-box div:last-child { border-bottom: none; }
-        .modal-detail-box div span:first-child { color: var(--saffron); font-weight: 700; min-width: 90px; }
-        .modal-close { margin-top: 24px; padding: 12px 36px; background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); color: white; border: none; border-radius: 50px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: 'Lato'; }
-        .modal-close:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(255,107,53,0.4); }
+        .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:20000; display:none; align-items:center; justify-content:center; padding:20px; }
+        .modal-overlay.show { display:flex; }
+        .modal-box { background:white; border-radius:24px; padding:40px 36px; max-width:460px; width:100%; text-align:center; animation:modalIn 0.35s ease; }
+        .modal-icon { font-size:4rem; margin-bottom:16px; }
+        .modal-box h3 { font-family:'Cinzel'; color:var(--deep-orange); font-size:1.4rem; margin-bottom:10px; }
+        .modal-box p { font-size:0.9rem; color:#666; line-height:1.7; margin-bottom:6px; }
+        .modal-detail-box { background:var(--cream); border-radius:12px; padding:16px 20px; margin:16px 0; text-align:left; font-size:0.85rem; }
+        .modal-detail-box div { padding:5px 0; border-bottom:1px solid #EEE; display:flex; gap:10px; }
+        .modal-detail-box div:last-child { border-bottom:none; }
+        .modal-detail-box div span:first-child { color:var(--saffron); font-weight:700; min-width:90px; }
+        .modal-close { margin-top:24px; padding:12px 36px; background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); color:white; border:none; border-radius:50px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:var(--transition); font-family:'Lato'; }
+        .modal-close:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(255,107,53,0.4); }
 
-        /* LIGHTBOX */
         #lightbox { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.93); z-index:10000; display:none; align-items:center; justify-content:center; flex-direction:column; }
         #lightbox img { max-width:90%; max-height:80vh; border:3px solid var(--gold); border-radius:8px; }
-        #lightbox-close { position:absolute; top:20px; right:28px; color:white; font-size:2.5rem; cursor:pointer; transition: var(--transition); }
-        #lightbox-close:hover { color: var(--gold); transform: scale(1.2); }
+        #lightbox-close { position:absolute; top:20px; right:28px; color:white; font-size:2.5rem; cursor:pointer; transition:var(--transition); }
+        #lightbox-close:hover { color:var(--gold); transform:scale(1.2); }
 
         /* ANNOUNCEMENT BANNER */
-        .announce-bar { background: linear-gradient(90deg, #7B1E00, var(--deep-orange), #7B1E00); color: white; text-align: center; padding: 12px 20px; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.04em; position: relative; z-index: 3; overflow: hidden; }
-        .announce-bar span { animation: marqueeText 18s linear infinite; display: inline-block; white-space: nowrap; }
-        @keyframes marqueeText { 0%{ transform: translateX(60vw); } 100%{ transform: translateX(-100%); } }
-        .announce-bar i { color: var(--gold); margin: 0 8px; }
+        .announce-bar { background:linear-gradient(90deg,#7B1E00,var(--deep-orange),#7B1E00); color:white; text-align:center; padding:12px 20px; font-size:0.88rem; font-weight:700; letter-spacing:0.04em; position:relative; z-index:3; overflow:hidden; }
+        .announce-bar span { animation:marqueeText 20s linear infinite; display:inline-block; white-space:nowrap; }
+        .announce-bar i { color:var(--gold); margin:0 8px; }
 
-        /* UPCOMING EVENTS */
-        .events-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-        .event-card { background: white; border-radius: 22px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.10); border: 2px solid #FFE082; transition: var(--transition); }
-        .event-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(230,81,0,0.15); }
-        .event-card-header { background: linear-gradient(135deg, var(--saffron), var(--deep-orange)); padding: 22px 24px; color: white; position: relative; overflow: hidden; }
-        .event-card-header::before { content: 'ॐ'; position: absolute; right: 16px; top: 8px; font-size: 5rem; opacity: 0.1; font-family: serif; }
-        .event-card-header h3 { font-family: 'Cinzel'; font-size: 1rem; color: white; margin-bottom: 6px; line-height: 1.4; }
-        .event-card-header .event-tamil { font-size: 0.82rem; color: rgba(255,255,255,0.85); margin-bottom: 10px; line-height: 1.5; }
-        .event-date-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 50px; padding: 5px 14px; font-size: 0.8rem; font-weight: 700; }
-        .event-card-body { padding: 20px 24px 24px; }
-        .event-meta { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-        .event-meta-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #555; }
-        .event-meta-row i { color: var(--saffron); margin-top: 2px; flex-shrink: 0; width: 14px; }
+        /* PDF EVENTS */
+        .pdf-wrap { max-width:800px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 10px 36px rgba(0,0,0,0.15); border:3px solid var(--gold); background:white; }
+        .pdf-header { padding:18px 24px; background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); color:white; font-family:'Cinzel',serif; font-size:0.95rem; text-align:center; line-height:1.5; }
+        .pdf-iframe { width:100%; height:700px; border:none; display:block; }
+        .pdf-mobile-btns { display:none; flex-direction:column; align-items:center; gap:14px; padding:36px 24px; }
+        .pdf-footer { text-align:center; padding:12px; border-top:1px solid #FFE082; background:#FFFBF0; }
 
-        /* SCHEDULE ACCORDION */
-        .schedule-toggle { width: 100%; background: linear-gradient(135deg, #FFF8E1, #FFF3CD); border: 2px solid #FFE082; border-radius: 10px; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: var(--deep-orange); transition: var(--transition); font-family: 'Lato'; }
-        .schedule-toggle:hover { background: linear-gradient(135deg, #FFE0B2, #FFCC80); }
-        .schedule-toggle i { transition: var(--transition); }
-        .schedule-toggle.open i.chev { transform: rotate(180deg); }
-        .schedule-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
-        .schedule-body.open { max-height: 1200px; }
-        .schedule-day { margin-top: 12px; }
-        .schedule-day-title { font-size: 0.78rem; font-weight: 700; color: white; background: linear-gradient(90deg, var(--saffron), var(--deep-orange)); padding: 5px 12px; border-radius: 6px; margin-bottom: 6px; display: inline-block; }
-        .schedule-row { display: flex; gap: 10px; padding: 5px 0; border-bottom: 1px dashed #EEE; font-size: 0.78rem; }
-        .schedule-row:last-child { border-bottom: none; }
-        .schedule-row .s-time { color: var(--deep-orange); font-weight: 700; min-width: 95px; flex-shrink: 0; }
-        .schedule-row .s-event { color: #555; }
-        .event-bank-box { background: #FFF8E7; border: 1px solid #FFE082; border-radius: 10px; padding: 12px 14px; margin-top: 14px; font-size: 0.78rem; color: #555; line-height: 1.8; }
-        .event-bank-box strong { color: var(--deep-orange); display: block; margin-bottom: 4px; font-size: 0.8rem; }
-        @media (max-width: 800px) { .events-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 700px) { .pdf-grid { grid-template-columns: 1fr !important; } }
-
-        /* FOOTER */
-        footer { background: #2D1B18; color: var(--cream); text-align: center; padding: 35px 20px; }
-        footer h3 { font-size: 1.6rem; margin-bottom: 8px; color: var(--gold); }
-        footer p { font-size: 0.85rem; opacity: 0.7; }
-
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .about-grid, .reach-grid { grid-template-columns: 1fr; }
-            nav ul { display: none; }
-            .mobile-menu-btn { display: block; }
-            .nav-active { display: flex !important; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: var(--cream); padding: 20px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
-            .lang-switch { top: auto; bottom: 110px; right: 15px; }
-            .hero h1 { font-size: 1.9rem; }
-            section { padding: 50px 6%; }
-            .map-actions { justify-content: center; }
-            .form-grid { grid-template-columns: 1fr; }
-            .appt-body-inner, .feedback-card { padding: 22px 18px 28px; }
-            .appt-trigger { padding: 16px 18px; }
+        /* Show/hide based on screen */
+        @media (max-width:768px) {
+            .pdf-iframe { display:none; }
+            .pdf-mobile-btns { display:flex; }
         }
-        @media (max-width: 600px) {
-            .festivals-grid, .services-grid { grid-template-columns: 1fr 1fr; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .contact-number-row { flex-direction: column; text-align: center; }
-            .contact-number-label { text-align: center; }
+
+        footer { background:#2D1B18; color:var(--cream); text-align:center; padding:35px 20px; }
+        footer h3 { font-size:1.6rem; margin-bottom:8px; color:var(--gold); }
+        footer p { font-size:0.85rem; opacity:0.7; }
+
+        @media (max-width:992px) {
+            .about-grid, .reach-grid { grid-template-columns:1fr; }
+            nav ul { display:none; }
+            .mobile-menu-btn { display:block; }
+            .nav-active { display:flex !important; flex-direction:column; position:absolute; top:65px; left:0; width:100%; background:var(--cream); padding:20px; box-shadow:0 6px 12px rgba(0,0,0,0.1); z-index:999; }
+            .lang-switch { top:auto; bottom:110px; right:15px; }
+            .hero h1 { font-size:1.9rem; }
+            section { padding:50px 6%; }
+            .map-actions { justify-content:center; }
+            .form-grid { grid-template-columns:1fr; }
+            .appt-body-inner, .feedback-card { padding:22px 18px 28px; }
+            .appt-trigger { padding:16px 18px; }
+        }
+        @media (max-width:600px) {
+            .festivals-grid, .services-grid { grid-template-columns:1fr 1fr; }
+            .gallery-grid { grid-template-columns:1fr 1fr; }
+            .contact-number-row { flex-direction:column; text-align:center; }
+            .contact-number-label { text-align:center; }
+            .pdf-header { font-size:0.82rem; }
         }
     </style>
 </head>
@@ -289,7 +254,7 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- CONFIRMATION MODAL -->
+<!-- MODAL -->
 <div class="modal-overlay" id="confirmModal">
     <div class="modal-box">
         <div class="modal-icon" id="modalIcon">🙏</div>
@@ -305,12 +270,10 @@
 <div class="announce-bar">
     <span>
         <i class="fas fa-star"></i> UPCOMING EVENT &nbsp;|&nbsp;
-        🪔 Maha Kumbabishekam — 19, 20 &amp; 21 June 2026 &nbsp;|&nbsp;
-        <i class="fas fa-star"></i> Bheemara Shanti — 20 June 2026 &nbsp;|&nbsp;
+        🪔 Ashta Bandana Maha Kumbabishekam — 19, 20 &amp; 21 June 2026 &nbsp;|&nbsp;
+        <i class="fas fa-star"></i> Sri Ananda Sai Dhyana Mandapam, Poonthandalam &nbsp;|&nbsp;
         📞 9840219388 / 9789058088 &nbsp;|&nbsp;
-        <i class="fas fa-star"></i> UPCOMING EVENT &nbsp;|&nbsp;
-        🪔 Maha Kumbabishekam — 19, 20 &amp; 21 June 2026 &nbsp;|&nbsp;
-        <i class="fas fa-star"></i> Bheemara Shanti — 20 June 2026
+        <i class="fas fa-star"></i> All Welcome — Annadanam at 12 Noon on 21 June 2026 🙏
     </span>
 </div>
 
@@ -344,87 +307,39 @@
 
 <!-- UPCOMING EVENTS -->
 <section id="events" style="background:#fcf1d8;">
-    <h2 class="section-title">Upcoming Events</h2>
-    <div class="pdf-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1100px;margin:0 auto;">
-
-        <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.13);border:3px solid var(--gold);">
-            <embed src="images/SRI SAI INVITATION.pdf" type="application/pdf" width="100%" height="620px"
-                   style="display:block;">
-            <div style="text-align:center;padding:12px;background:white;border-top:2px solid #FFE082;">
-                <a href="images/SRI SAI INVITATION.pdf" download
-                   style="display:inline-flex;align-items:center;gap:7px;padding:8px 20px;background:linear-gradient(135deg,var(--saffron),var(--deep-orange));color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.82rem;">
-                    <i class="fas fa-download"></i> Download Invitation
-                </a>
-            </div>
+    <h2 class="section-title">Upcoming Event</h2>
+    <div class="pdf-wrap">
+        <div class="pdf-header">
+            🪔 அருள்மிகு ஸ்ரீ ஆனந்தசாயி புணரா வர்த்தன ஜீர்ணோத்தாரண அஷ்ட பந்தன மஹா கும்பாபிஷேகம்<br>
+            <span style="font-family:'Lato',sans-serif;font-size:0.82rem;opacity:0.9;">Sri Ananda Sai Punara Vardhana Jeernodhaarana Ashta Bandana Maha Kumbabishekam &nbsp;|&nbsp; 19 – 21 June 2026</span>
         </div>
 
-        <div style="border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.13);">
-                   <!-- EVENT 1: MAHA KUMBABISHEKAM -->
-        <div class="event-card">
-            <div class="event-card-header">
-                <h3>Sri Ananda Sai Punara Vardhana Jeernodhaarana<br>Ashta Bandana Maha Kumbabishekam</h3>
-                <div class="event-tamil">அருள்மிகு ஸ்ரீ ஆனந்தசாயி புணரா வர்த்தன ஜீர்ணோத்தாரண அஷ்ட பந்தன மஹா கும்பாபிஷேகம்</div>
-                <div class="event-date-badge"><i class="fas fa-calendar-alt"></i> 19 – 21 June 2026 &nbsp;|&nbsp; 3-Day Event</div>
-            </div>
-            <div class="event-card-body">
-                <div class="event-meta">
-                    <div class="event-meta-row"><i class="fas fa-calendar-check"></i><span><strong>Main Kumbabishekam:</strong> Sunday, 21 June 2026 — Aani 7th, Sapta Tithi, Pooram Nakshatram</span></div>
-                    <div class="event-meta-row"><i class="fas fa-clock"></i><span>Gopura Maha Kumbabishekam: <strong>9:45 AM – 10:30 AM</strong><br>Moolastana Maha Kumbabishekam: <strong>10:30 AM – 11:15 AM</strong></span></div>
-                    <div class="event-meta-row"><i class="fas fa-map-marker-alt"></i><span>Sri Ananda Sai Dhyana Mandapam, Poonthandalam, Chennai – 600069</span></div>
-                    <div class="event-meta-row"><i class="fas fa-utensils"></i><span>Annadanam at <strong>12:00 Noon</strong> — All are welcome 🙏</span></div>
-                </div>
+        <!-- Desktop: inline PDF viewer -->
+        <iframe class="pdf-iframe" src="images/SRI SAI INVITATION.pdf" title="Maha Kumbabishekam Invitation"></iframe>
 
-                <!-- 3-day schedule accordion -->
-                <button class="schedule-toggle" onclick="toggleSchedule(this)">
-                    <span><i class="fas fa-list-ul" style="margin-right:7px;"></i>View Full 3-Day Program Schedule</span>
-                    <i class="fas fa-chevron-down chev"></i>
-                </button>
-                <div class="schedule-body">
-                    <div class="schedule-day">
-                        <div class="schedule-day-title">📅 Day 1 — Friday, 19 June 2026 (Aani 5th)</div>
-                        <div class="schedule-row"><span class="s-time">8:00 AM</span><span class="s-event">Anukkni, Vineshwara Puja, Maha Sankalpam, Ganapathi Homam, Navagraha Homam, Lakshmi Homam, Dana Puja</span></div>
-                        <div class="schedule-row"><span class="s-time">10:00 AM</span><span class="s-event">Poornaahooti, Deepaarathanai</span></div>
-                        <div class="schedule-row"><span class="s-time">10:30 AM</span><span class="s-event">Prasada Viniyogam</span></div>
-                        <div class="schedule-row"><span class="s-time">5:00 PM</span><span class="s-event">Vineshwara Puja, Punyavachana, Vastu Shanti, Mantra Sankruhanam, Anguraarpanam, Raksha Bandhanam</span></div>
-                        <div class="schedule-row"><span class="s-time">6:30 PM</span><span class="s-event">Kalaakarshanam</span></div>
-                        <div class="schedule-row"><span class="s-time">7:00 PM</span><span class="s-event">Yaaga Salai Pravesham — First Kala Yaaga Puja begins</span></div>
-                        <div class="schedule-row"><span class="s-time">9:00 PM</span><span class="s-event">Dravyaahooti, Poornaahooti, Deepaarathanai, Prasada Viniyogam</span></div>
-                    </div>
-                    <div class="schedule-day">
-                        <div class="schedule-day-title">📅 Day 2 — Saturday, 20 June 2026 (Aani 6th)</div>
-                        <div class="schedule-row"><span class="s-time">8:00 AM</span><span class="s-event">Second Kala Yaaga Puja begins</span></div>
-                        <div class="schedule-row"><span class="s-time">10:00 AM</span><span class="s-event">Poornaahooti, Deepaarathanai</span></div>
-                        <div class="schedule-row"><span class="s-time">6:00 PM</span><span class="s-event">Third Kala Yaaga Puja begins</span></div>
-                        <div class="schedule-row"><span class="s-time">8:00 PM</span><span class="s-event">Dravyaahooti</span></div>
-                        <div class="schedule-row"><span class="s-time">8:30 PM</span><span class="s-event">Poornaahooti, Deepaarathanai</span></div>
-                        <div class="schedule-row"><span class="s-time">9:00 PM</span><span class="s-event">Prasada Viniyogam</span></div>
-                    </div>
-                    <div class="schedule-day">
-                        <div class="schedule-day-title">📅 Day 3 — Sunday, 21 June 2026 (Aani 7th) — Main Day</div>
-                        <div class="schedule-row"><span class="s-time">7:00 AM</span><span class="s-event">Fourth Kala Yaaga Puja, Pimba Shuddhi, Raksha Bandhanam, Tattvarchana, Sparsaahooti</span></div>
-                        <div class="schedule-row"><span class="s-time">9:00 AM</span><span class="s-event">Dravyaahooti, Poornaahooti</span></div>
-                        <div class="schedule-row"><span class="s-time">9:30 AM</span><span class="s-event">Deepaarathanai</span></div>
-                        <div class="schedule-row"><span class="s-time">9:45 – 10:30 AM</span><span class="s-event">🏛️ <strong>Gopura Maha Kumbabishekam</strong></span></div>
-                        <div class="schedule-row"><span class="s-time">10:30 – 11:15 AM</span><span class="s-event">🏛️ <strong>Moolastana Maha Kumbabishekam</strong></span></div>
-                        <div class="schedule-row"><span class="s-time">11:45 AM</span><span class="s-event">Vishesa Alankaram, Maha Deepaarathanai</span></div>
-                        <div class="schedule-row"><span class="s-time">12:00 Noon</span><span class="s-event">🍛 <strong>Annadanam — All are welcome!</strong></span></div>
-                    </div>
-                </div>
-
-                <div class="event-bank-box">
-                    <strong><i class="fas fa-hand-holding-heart" style="margin-right:6px;color:var(--saffron);"></i>Donations Welcome — Shirdi Sri Sai Chiranjeevi Foundation</strong>
-                    City Union Bank, Thirumudivakkam Branch<br>
-                    A/C No: <strong>510909010128380</strong> &nbsp;|&nbsp; IFS Code: <strong>CIUB0000400</strong>
-                </div>
-            </div>
-        </div>
+        <!-- Mobile: tap buttons -->
+        <div class="pdf-mobile-btns">
+            <i class="fas fa-file-pdf" style="font-size:4.5rem;color:var(--saffron);opacity:0.6;"></i>
+            <p style="font-size:0.88rem;color:#666;text-align:center;line-height:1.7;">
+                Tap below to view or download<br>the Maha Kumbabishekam invitation
+            </p>
+            <a href="images/SRI SAI INVITATION.pdf" target="_blank"
+               style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 0;width:100%;max-width:340px;background:linear-gradient(135deg,var(--saffron),var(--deep-orange));color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.95rem;">
+                <i class="fas fa-eye"></i> Open Invitation
+            </a>
+            <a href="images/SRI SAI INVITATION.pdf" download
+               style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 0;width:100%;max-width:340px;background:white;color:var(--deep-orange);border:2px solid var(--saffron);border-radius:50px;text-decoration:none;font-weight:700;font-size:0.95rem;">
+                <i class="fas fa-download"></i> Download PDF
+            </a>
         </div>
 
+        <div class="pdf-footer">
+            <a href="images/SRI SAI INVITATION.pdf" download
+               style="display:inline-flex;align-items:center;gap:7px;padding:8px 22px;background:linear-gradient(135deg,var(--saffron),var(--deep-orange));color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.82rem;">
+                <i class="fas fa-download"></i> Download Invitation
+            </a>
+        </div>
     </div>
-    <p style="text-align:center;margin-top:20px;font-size:0.8rem;color:#888;">
-        <i class="fas fa-info-circle" style="color:var(--saffron);margin-right:5px;"></i>
-        If the invitation does not display, please use the Download button above.
-    </p>
 </section>
 
 <!-- ABOUT -->
@@ -449,83 +364,29 @@
 <!-- TIMINGS -->
 <section id="timings" style="background:#fcf1d8;">
     <h2 class="section-title" data-key="nav-timings">Daily Timings</h2>
-
-    <!-- Tab buttons -->
     <div class="timings-tabs">
-        <button class="timing-tab active" onclick="switchTab('regular', this)">Mon – Wed &amp; Fri – Sun</button>
-        <button class="timing-tab" onclick="switchTab('thursday', this)">Thursday (Special)</button>
+        <button class="timing-tab active" onclick="switchTab('regular',this)">Mon – Wed &amp; Fri – Sun</button>
+        <button class="timing-tab" onclick="switchTab('thursday',this)">Thursday (Special)</button>
     </div>
-
-    <!-- Regular days panel -->
     <div class="timing-panel active" id="tab-regular">
         <div class="timing-grid">
-            <div class="time-card">
-                <i class="fas fa-sun"></i>
-                <h3>Morning Aarti</h3>
-                <p>6:00 AM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-door-open"></i>
-                <h3>Darshan</h3>
-                <p>6:00 AM – 11:00 AM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-om"></i>
-                <h3>Noon Aarti</h3>
-                <p>11:00 AM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-door-open"></i>
-                <h3>Evening Darshan</h3>
-                <p>4:00 PM – 7:00 PM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-cloud-sun"></i>
-                <h3>Dhoop Aarti</h3>
-                <p>6:00 PM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-moon"></i>
-                <h3>Night Aarti</h3>
-                <p>7:00 PM</p>
-            </div>
+            <div class="time-card"><i class="fas fa-sun"></i><h3>Morning Aarti</h3><p>6:00 AM</p></div>
+            <div class="time-card"><i class="fas fa-door-open"></i><h3>Darshan</h3><p>6:00 AM – 11:00 AM</p></div>
+            <div class="time-card"><i class="fas fa-om"></i><h3>Noon Aarti</h3><p>11:00 AM</p></div>
+            <div class="time-card"><i class="fas fa-door-open"></i><h3>Evening Darshan</h3><p>4:00 PM – 7:00 PM</p></div>
+            <div class="time-card"><i class="fas fa-cloud-sun"></i><h3>Dhoop Aarti</h3><p>6:00 PM</p></div>
+            <div class="time-card"><i class="fas fa-moon"></i><h3>Night Aarti</h3><p>7:00 PM</p></div>
         </div>
         <p class="timing-note">Timings apply on Monday, Tuesday, Wednesday, Friday, Saturday &amp; Sunday</p>
     </div>
-
-    <!-- Thursday panel -->
     <div class="timing-panel" id="tab-thursday">
         <div class="timing-grid">
-            <div class="time-card">
-                <i class="fas fa-sun"></i>
-                <h3>Morning Aarti</h3>
-                <p>5:00 AM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-door-open"></i>
-                <h3>Darshan</h3>
-                <p>5:00 AM – 2:00 PM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-om"></i>
-                <h3>Noon Aarti</h3>
-                <p>12:00 Noon</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-utensils"></i>
-                <h3>Annadanam</h3>
-                <p>1:00 PM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-door-open"></i>
-                <h3>Evening Darshan</h3>
-                <p>4:00 PM – 8:00 PM</p>
-            </div>
-            <div class="time-card">
-                <i class="fas fa-cloud-sun"></i>
-                <h3>Dhoop Aarti</h3>
-                <p>6:00 PM</p>
-            </div>
+            <div class="time-card"><i class="fas fa-sun"></i><h3>Morning Aarti</h3><p>5:00 AM</p></div>
+            <div class="time-card"><i class="fas fa-door-open"></i><h3>Darshan</h3><p>5:00 AM – 2:00 PM</p></div>
+            <div class="time-card"><i class="fas fa-om"></i><h3>Noon Aarti</h3><p>12:00 Noon</p></div>
+            <div class="time-card"><i class="fas fa-utensils"></i><h3>Annadanam</h3><p>1:00 PM</p></div>
+            <div class="time-card"><i class="fas fa-door-open"></i><h3>Evening Darshan</h3><p>4:00 PM – 8:00 PM</p></div>
+            <div class="time-card"><i class="fas fa-cloud-sun"></i><h3>Dhoop Aarti</h3><p>6:00 PM</p></div>
         </div>
         <p class="timing-note">Thursday is a special day — extended morning hours &amp; Annadanam seva 🙏</p>
     </div>
@@ -581,25 +442,14 @@
                 <p class="appt-sub">Fill the form and submit. A confirmation popup will appear and your details will be emailed to the temple. 🙏</p>
                 <form id="appointmentForm" onsubmit="submitAppointment(event)">
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label><i class="fas fa-user"></i>Your Full Name *</label>
-                            <input type="text" class="form-control" name="Full Name" placeholder="e.g. Priya Raman" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-envelope"></i>Your Email *</label>
-                            <input type="email" class="form-control" name="Email" placeholder="yourname@gmail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-mobile-alt"></i>Phone Number *</label>
-                            <input type="tel" class="form-control" name="Phone" placeholder="+91 98XXX XXXXX" required>
-                        </div>
+                        <div class="form-group"><label><i class="fas fa-user"></i>Your Full Name *</label><input type="text" class="form-control" name="Full Name" placeholder="e.g. Priya Raman" required></div>
+                        <div class="form-group"><label><i class="fas fa-envelope"></i>Your Email *</label><input type="email" class="form-control" name="Email" placeholder="yourname@gmail.com" required></div>
+                        <div class="form-group"><label><i class="fas fa-mobile-alt"></i>Phone Number *</label><input type="tel" class="form-control" name="Phone" placeholder="+91 98XXX XXXXX" required></div>
                         <div class="form-group">
                             <label><i class="fas fa-users"></i>Number of Devotees</label>
                             <select class="form-control" name="Devotees">
-                                <option value="1">1 person</option>
-                                <option value="2">2 people</option>
-                                <option value="3-5" selected>3–5 people</option>
-                                <option value="6-10">6–10 people</option>
+                                <option value="1">1 person</option><option value="2">2 people</option>
+                                <option value="3-5" selected>3–5 people</option><option value="6-10">6–10 people</option>
                                 <option value="10+">More than 10</option>
                             </select>
                         </div>
@@ -607,49 +457,31 @@
                             <label><i class="fas fa-om"></i>Pooja Type *</label>
                             <select class="form-control" name="Pooja Type" required>
                                 <option value="">— Select Pooja —</option>
-                                <option>Sai Satcharitra Puja</option>
-                                <option>Abhishekam</option>
-                                <option>Sahasranama Archana</option>
-                                <option>Homam / Havan</option>
-                                <option>Annadhanam Sponsorship</option>
-                                <option>Birthday / Anniversary Puja</option>
-                                <option>General Darshan Visit</option>
-                                <option>Other (mention in notes)</option>
+                                <option>Sai Satcharitra Puja</option><option>Abhishekam</option>
+                                <option>Sahasranama Archana</option><option>Homam / Havan</option>
+                                <option>Annadhanam Sponsorship</option><option>Birthday / Anniversary Puja</option>
+                                <option>General Darshan Visit</option><option>Other (mention in notes)</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-calendar"></i>Preferred Date *</label>
-                            <input type="date" class="form-control" name="Preferred Date" id="visitDate" required>
-                        </div>
+                        <div class="form-group"><label><i class="fas fa-calendar"></i>Preferred Date *</label><input type="date" class="form-control" name="Preferred Date" id="visitDate" required></div>
                         <div class="form-group full">
                             <label><i class="fas fa-clock"></i>Preferred Time *</label>
                             <select class="form-control" name="Preferred Time" required>
                                 <option value="">— Select Time Slot —</option>
-                                <option>6:00 AM</option><option>6:30 AM</option>
-                                <option>7:00 AM</option><option>7:30 AM</option>
-                                <option>8:00 AM</option><option>8:30 AM</option>
-                                <option>9:00 AM</option><option>9:30 AM</option>
+                                <option>6:00 AM</option><option>6:30 AM</option><option>7:00 AM</option><option>7:30 AM</option>
+                                <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
                                 <option>10:00 AM</option><option>10:30 AM</option>
                                 <option>11:00 AM (Noon Aarti)</option>
-                                <option>12:00 PM</option><option>12:30 PM</option>
-                                <option>1:00 PM</option><option>1:30 PM</option>
-                                <option>2:00 PM</option><option>2:30 PM</option>
-                                <option>3:00 PM</option><option>3:30 PM</option>
-                                <option>4:00 PM</option><option>4:30 PM</option>
-                                <option>5:00 PM</option><option>5:30 PM</option>
-                                <option>6:00 PM (Dhoop Aarti)</option>
-                                <option>6:30 PM</option>
+                                <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+                                <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+                                <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+                                <option>6:00 PM (Dhoop Aarti)</option><option>6:30 PM</option>
                                 <option>7:00 PM (Night Aarti)</option>
                             </select>
                         </div>
-                        <div class="form-group full">
-                            <label><i class="fas fa-comment-dots"></i>Special Requests / Notes</label>
-                            <textarea class="form-control" name="Notes" rows="3" placeholder="Any specific prayers, requirements or notes for the temple..."></textarea>
-                        </div>
+                        <div class="form-group full"><label><i class="fas fa-comment-dots"></i>Special Requests / Notes</label><textarea class="form-control" name="Notes" rows="3" placeholder="Any specific prayers, requirements or notes for the temple..."></textarea></div>
                     </div>
-                    <button type="submit" class="submit-btn" id="apptSubmitBtn">
-                        <i class="fas fa-paper-plane"></i> Submit Appointment Request
-                    </button>
+                    <button type="submit" class="submit-btn" id="apptSubmitBtn"><i class="fas fa-paper-plane"></i> Submit Appointment Request</button>
                 </form>
             </div>
         </div>
@@ -721,27 +553,15 @@
         <input type="hidden" id="ratingValue" value="0">
         <form id="feedbackForm" onsubmit="submitFeedback(event)">
             <div class="form-grid">
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i>Your Name *</label>
-                    <input type="text" class="form-control" name="Name" placeholder="Your name" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-envelope"></i>Your Email *</label>
-                    <input type="email" class="form-control" name="Email" placeholder="yourname@gmail.com" required>
-                </div>
-                <div class="form-group full">
-                    <label><i class="fas fa-comment-alt"></i>Your Feedback / Experience *</label>
-                    <textarea class="form-control" name="Feedback" rows="4" placeholder="Tell us about your visit, darshan experience, or any suggestions..." required></textarea>
-                </div>
+                <div class="form-group"><label><i class="fas fa-user"></i>Your Name *</label><input type="text" class="form-control" name="Name" placeholder="Your name" required></div>
+                <div class="form-group"><label><i class="fas fa-envelope"></i>Your Email *</label><input type="email" class="form-control" name="Email" placeholder="yourname@gmail.com" required></div>
+                <div class="form-group full"><label><i class="fas fa-comment-alt"></i>Your Feedback / Experience *</label><textarea class="form-control" name="Feedback" rows="4" placeholder="Tell us about your visit, darshan experience, or any suggestions..." required></textarea></div>
             </div>
-            <button type="submit" class="feedback-submit" id="feedbackSubmitBtn">
-                <i class="fas fa-paper-plane"></i> Send Feedback
-            </button>
+            <button type="submit" class="feedback-submit" id="feedbackSubmitBtn"><i class="fas fa-paper-plane"></i> Send Feedback</button>
         </form>
     </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="if(event.target===this)closeLightbox()">
     <span id="lightbox-close" onclick="closeLightbox()">✕</span>
     <img id="lb-img" src="" alt="Temple Photo">
@@ -757,15 +577,6 @@
 const APPT_FORM_ID = 'mreareyz';
 const FB_FORM_ID   = 'xbdaqdzj';
 
-// ── SCHEDULE TOGGLE ───────────────────────────────────────────
-function toggleSchedule(btn) {
-    const body = btn.nextElementSibling;
-    const isOpen = body.classList.contains('open');
-    body.classList.toggle('open', !isOpen);
-    btn.classList.toggle('open', !isOpen);
-}
-
-// ── TIMING TABS ──────────────────────────────────────────────
 function switchTab(name, btn) {
     document.querySelectorAll('.timing-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.timing-tab').forEach(b => b.classList.remove('active'));
@@ -773,7 +584,6 @@ function switchTab(name, btn) {
     btn.classList.add('active');
 }
 
-// ── ACCORDION ────────────────────────────────────────────────
 function toggleAppt() {
     const trigger = document.getElementById('apptTrigger');
     const body    = document.getElementById('apptBody');
@@ -783,90 +593,85 @@ function toggleAppt() {
     if (!isOpen) setTimeout(() => trigger.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
 }
 
-// ── MIN DATE = TODAY ─────────────────────────────────────────
+function toggleMenu() {
+    const nav = document.getElementById("nav-links");
+    nav.classList.toggle("nav-active");
+    document.querySelector('.mobile-menu-btn i').className =
+        nav.classList.contains('nav-active') ? 'fas fa-times' : 'fas fa-bars';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const d = document.getElementById('visitDate');
     if (d) d.min = new Date().toISOString().split('T')[0];
+
+    document.querySelectorAll('#nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav-links').classList.remove('nav-active');
+            document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
+        });
+    });
 });
 
-// ── APPOINTMENT SUBMIT ───────────────────────────────────────
 async function submitAppointment(e) {
     e.preventDefault();
-    const btn  = document.getElementById('apptSubmitBtn');
+    const btn = document.getElementById('apptSubmitBtn');
     const form = document.getElementById('appointmentForm');
-    const fd   = new FormData(form);
-
+    const fd = new FormData(form);
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
     const name = fd.get('Full Name');
     const details = [
-        ['Pooja',    fd.get('Pooja Type')],
-        ['Date',     fd.get('Preferred Date')],
-        ['Time',     fd.get('Preferred Time')],
-        ['Devotees', fd.get('Devotees')],
-        ['Email',    fd.get('Email')],
-        ['Phone',    fd.get('Phone')],
+        ['Pooja', fd.get('Pooja Type')], ['Date', fd.get('Preferred Date')],
+        ['Time', fd.get('Preferred Time')], ['Devotees', fd.get('Devotees')],
+        ['Email', fd.get('Email')], ['Phone', fd.get('Phone')],
     ];
-
     try {
         const res = await fetch(`https://formspree.io/f/${APPT_FORM_ID}`, {
             method: 'POST', body: fd, headers: { 'Accept': 'application/json' }
         });
         if (!res.ok) throw new Error();
         showModal({ icon:'🙏', title:'Booking Received!',
-            msg:`Thank you <strong>${name}</strong>! Your appointment request has been sent to the temple. We will confirm your slot shortly.`,
-            details });
+            msg:`Thank you <strong>${name}</strong>! Your appointment request has been sent to the temple. We will confirm your slot shortly.`, details });
         form.reset();
         document.getElementById('apptBody').classList.remove('open');
         document.getElementById('apptTrigger').classList.remove('open');
     } catch {
         showModal({ icon:'🙏', title:'Request Noted!',
-            msg:`<strong>${name}</strong>, your details have been saved. Please add your Formspree ID to activate email delivery. Jai Sai Ram!`,
-            details });
+            msg:`<strong>${name}</strong>, your details have been saved. Jai Sai Ram!`, details });
         form.reset();
     }
-
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Appointment Request';
 }
 
-// ── FEEDBACK SUBMIT ──────────────────────────────────────────
 async function submitFeedback(e) {
     e.preventDefault();
-    const btn  = document.getElementById('feedbackSubmitBtn');
+    const btn = document.getElementById('feedbackSubmitBtn');
     const form = document.getElementById('feedbackForm');
-    const fd   = new FormData(form);
+    const fd = new FormData(form);
     const rating = document.getElementById('ratingValue').value;
-    const stars  = '★'.repeat(Number(rating)) + '☆'.repeat(5 - Number(rating));
+    const stars = '★'.repeat(Number(rating)) + '☆'.repeat(5 - Number(rating));
     fd.append('Star Rating', `${rating}/5  ${stars}`);
     const name = fd.get('Name');
-
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
     try {
         await fetch(`https://formspree.io/f/${FB_FORM_ID}`, {
             method: 'POST', body: fd, headers: { 'Accept': 'application/json' }
         });
     } catch {}
-
     showModal({ icon:'💛', title:'Thank You!',
         msg:`<strong>${name}</strong>, your feedback has been received. Baba's blessings be with you always!`,
-        details: [['Rating', `${rating}/5  ${stars}`], ['From', fd.get('Email')]]
-    });
-    form.reset();
-    resetRating();
-
+        details: [['Rating', `${rating}/5  ${stars}`], ['From', fd.get('Email')]] });
+    form.reset(); resetRating();
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Feedback';
 }
 
-// ── MODAL ────────────────────────────────────────────────────
 function showModal({ icon, title, msg, details }) {
-    document.getElementById('modalIcon').textContent  = icon;
-    document.getElementById('modalTitle').innerHTML   = title;
-    document.getElementById('modalMsg').innerHTML     = msg;
+    document.getElementById('modalIcon').textContent = icon;
+    document.getElementById('modalTitle').innerHTML = title;
+    document.getElementById('modalMsg').innerHTML = msg;
     document.getElementById('modalDetails').innerHTML =
         details.map(([k,v]) => `<div><span>${k}</span><span>${v||'—'}</span></div>`).join('');
     document.getElementById('confirmModal').classList.add('show');
@@ -880,7 +685,6 @@ document.getElementById('confirmModal').addEventListener('click', e => {
     if (e.target.id === 'confirmModal') closeModal();
 });
 
-// ── STAR RATING ──────────────────────────────────────────────
 function setRating(val) {
     document.getElementById('ratingValue').value = val;
     document.querySelectorAll('#starRating i').forEach((s,i) =>
@@ -900,7 +704,6 @@ document.querySelectorAll('#starRating i').forEach(star => {
         setRating(parseInt(document.getElementById('ratingValue').value)));
 });
 
-// ── GALLERY (no captions) ─────────────────────────────────────
 const galleryImages = [
     "images/photo1.jpg","images/photo2.jpg","images/photo3.jpg","images/photo4.jpg",
     "images/photo5.jpg","images/photo6.jpg","images/photo7.jpg","images/photo8.jpg",
@@ -911,20 +714,12 @@ galleryImages.forEach(file => {
     const div = document.createElement("div");
     div.className = "gallery-item";
     div.innerHTML = `<img src="${file}" alt="Temple Photo" onerror="this.parentElement.innerHTML='<div class=\\'gallery-placeholder\\'><i class=\\'fas fa-image\\'></i></div>'">`;
-    div.onclick = () => {
-        document.getElementById("lb-img").src = file;
-        document.getElementById("lightbox").style.display = "flex";
-        document.body.style.overflow = "hidden";
-    };
+    div.onclick = () => { document.getElementById("lb-img").src=file; document.getElementById("lightbox").style.display="flex"; document.body.style.overflow="hidden"; };
     grid.appendChild(div);
 });
 function closeLightbox() { document.getElementById("lightbox").style.display="none"; document.body.style.overflow=""; }
 document.addEventListener("keydown", e => { if(e.key==="Escape") closeLightbox(); });
 
-// ── MOBILE MENU ───────────────────────────────────────────────
-function toggleMenu() { document.getElementById("nav-links").classList.toggle("nav-active"); }
-
-// ── LANGUAGE ──────────────────────────────────────────────────
 const translations = {
     en: {
         "nav-home":"Home","nav-about":"History","nav-timings":"Timings","nav-festivals":"Festivals",
@@ -985,7 +780,6 @@ function setLanguage(lang) {
     document.getElementById('btn-ta').classList.toggle('active', lang==='ta');
 }
 
-// ── PETALS ────────────────────────────────────────────────────
 function createPetal() {
     const p = document.createElement('div');
     p.classList.add('petal');
