@@ -35,7 +35,8 @@
         .header-main { display:flex; justify-content:space-between; align-items:center; width:100%; }
         .header-marquee { background:linear-gradient(90deg,var(--saffron),var(--deep-orange),var(--saffron)); color:white; padding:8px 0; margin:0 -4%; overflow:hidden; white-space:nowrap; }
         .header-marquee-content { display:inline-block; animation:marqueeText 25s linear infinite; font-size:0.85rem; font-weight:600; letter-spacing:0.5px; }
-        .logo-text { font-size:1rem; font-weight:700; color:var(--deep-orange); text-transform:uppercase; font-family:'Cinzel'; }
+        .logo-text { font-size:1rem; font-weight:700; color:var(--deep-orange); text-transform:uppercase; font-family:'Cinzel'; display:flex; align-items:center; gap:10px; }
+        .logo-img { height:48px; width:48px; object-fit:contain; border-radius:50%; }
         nav ul { display:flex; list-style:none; gap:6px; flex-wrap:wrap; }
         nav a { text-decoration:none; color:var(--dark-text); font-weight:700; font-size:0.72rem; text-transform:uppercase; transition:var(--transition); padding:5px 8px; border-radius:5px; }
         nav a:hover { color:var(--saffron); background:rgba(255,107,53,0.08); }
@@ -224,7 +225,8 @@
         @media (max-width:992px) {
             .about-grid, .reach-grid { grid-template-columns:1fr; }
             .header-main { display:flex; justify-content:space-between; align-items:center; width:100%; }
-            .logo-text { flex-shrink:0; }
+            .logo-text { flex-shrink:0; font-size:0.9rem; }
+            .logo-img { height:40px; width:40px; }
             .mobile-menu-btn { display:block; margin-left:auto; }
             nav ul { display:none; }
             .nav-active { display:flex !important; flex-direction:column; position:absolute; top:120px; left:0; width:100%; background:var(--cream); padding:20px; box-shadow:0 6px 12px rgba(0,0,0,0.1); z-index:999; }
@@ -285,7 +287,10 @@
 <!-- HEADER -->
 <header>
     <div class="header-main">
-        <div class="logo-text" data-key="temple-name-nav">Sri Ananda Sai</div>
+        <div class="logo-text" data-key="temple-name-nav">
+            <img src="images/sai_logo.jpeg" alt="Sai Logo" class="logo-img" onerror="this.style.display='none'">
+            Sri Ananda Sai
+        </div>
         <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav>
             <ul id="nav-links">
