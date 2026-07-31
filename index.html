@@ -33,8 +33,6 @@
 
         header { background:rgba(255,248,231,0.97); padding:1rem 4%; position:fixed; width:100%; top:0; z-index:1000; box-shadow:0 2px 12px rgba(0,0,0,0.1); display:flex; flex-direction:column; margin-bottom:0; }
         .header-main { display:flex; justify-content:space-between; align-items:center; width:100%; }
-        .header-marquee { background:linear-gradient(90deg,var(--saffron),var(--deep-orange),var(--saffron)); color:white; padding:8px 0; margin:0 -4%; overflow:hidden; white-space:nowrap; }
-        .header-marquee-content { display:inline-block; animation:marqueeText 25s linear infinite; font-size:0.85rem; font-weight:600; letter-spacing:0.5px; }
         .logo-text { font-size:1rem; font-weight:700; color:var(--deep-orange); text-transform:uppercase; font-family:'Cinzel'; display:flex; align-items:center; gap:10px; }
         .logo-img { height:48px; width:48px; object-fit:contain; border-radius:50%; }
         nav ul { display:flex; list-style:none; gap:6px; flex-wrap:wrap; }
@@ -200,24 +198,6 @@
         #lightbox-close { position:absolute; top:20px; right:28px; color:white; font-size:2.5rem; cursor:pointer; transition:var(--transition); }
         #lightbox-close:hover { color:var(--gold); transform:scale(1.2); }
 
-        /* ANNOUNCEMENT BANNER */
-        .announce-bar { background:linear-gradient(90deg,#7B1E00,var(--deep-orange),#7B1E00); color:white; text-align:center; padding:12px 20px; font-size:0.88rem; font-weight:700; letter-spacing:0.04em; position:relative; z-index:3; overflow:hidden; }
-        .announce-bar span { animation:marqueeText 20s linear infinite; display:inline-block; white-space:nowrap; }
-        .announce-bar i { color:var(--gold); margin:0 8px; }
-
-        /* PDF EVENTS */
-        .pdf-wrap { max-width:800px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 10px 36px rgba(0,0,0,0.15); border:3px solid var(--gold); background:white; }
-        .pdf-header { padding:18px 24px; background:linear-gradient(135deg,var(--saffron),var(--deep-orange)); color:white; font-family:'Cinzel',serif; font-size:0.95rem; text-align:center; line-height:1.5; }
-        .pdf-iframe { width:100%; height:700px; border:none; display:block; }
-        .pdf-mobile-btns { display:none; flex-direction:column; align-items:center; gap:14px; padding:36px 24px; }
-        .pdf-footer { text-align:center; padding:12px; border-top:1px solid #FFE082; background:#FFFBF0; }
-
-        /* Show/hide based on screen */
-        @media (max-width:768px) {
-            .pdf-iframe { display:none; }
-            .pdf-mobile-btns { display:flex; }
-        }
-
         footer { background:#2D1B18; color:var(--cream); text-align:center; padding:35px 20px; }
         footer h3 { font-size:1.6rem; margin-bottom:8px; color:var(--gold); }
         footer p { font-size:0.85rem; opacity:0.7; }
@@ -229,7 +209,7 @@
             .logo-img { height:40px; width:40px; }
             .mobile-menu-btn { display:block; margin-left:auto; }
             nav ul { display:none; }
-            .nav-active { display:flex !important; flex-direction:column; position:absolute; top:120px; left:0; width:100%; background:var(--cream); padding:20px; box-shadow:0 6px 12px rgba(0,0,0,0.1); z-index:999; }
+            .nav-active { display:flex !important; flex-direction:column; position:absolute; top:80px; left:0; width:100%; background:var(--cream); padding:20px; box-shadow:0 6px 12px rgba(0,0,0,0.1); z-index:999; }
             .lang-switch { top:auto; bottom:110px; right:15px; }
             .hero h1 { font-size:1.9rem; }
             section { padding:50px 6%; }
@@ -273,17 +253,6 @@
     </div>
 </div>
 
-<!-- ANNOUNCEMENT BANNER -->
-<div class="announce-bar">
-    <span>
-        <i class="fas fa-star"></i> UPCOMING EVENT &nbsp;|&nbsp;
-        🪔 Ashta Bandana Maha Kumbabishekam — 19, 20 &amp; 21 June 2026 &nbsp;|&nbsp;
-        <i class="fas fa-star"></i> Sri Ananda Sai Dhyana Mandapam, Poonthandalam &nbsp;|&nbsp;
-        📞 9840219388 / 9789058088 &nbsp;|&nbsp;
-        <i class="fas fa-star"></i> Contact for details 🙏
-    </span>
-</div>
-
 <!-- HEADER -->
 <header>
     <div class="header-main">
@@ -296,7 +265,6 @@
             <ul id="nav-links">
                 <li><a href="#home"        data-key="nav-home">Home</a></li>
                 <li><a href="#about"       data-key="nav-about">History</a></li>
-                <li><a href="#events"      style="color:var(--saffron);">🪔 Events</a></li>
                 <li><a href="#timings"     data-key="nav-timings">Timings</a></li>
                 <li><a href="#festivals"   data-key="nav-festivals">Festivals</a></li>
                 <li><a href="#services"    data-key="nav-services">Services</a></li>
@@ -307,11 +275,6 @@
             </ul>
         </nav>
     </div>
-    <div class="header-marquee">
-        <div class="header-marquee-content" data-key="header-marquee">
-            🪔 UPCOMING EVENT: Sri Ananda Sai Punara Vardhana Jeernodhaarana Ashta Bandana Maha Kumbabishekam — 19, 20 & 21 June 2026 | Sri Ananda Sai Dhyana Mandapam, Poonthandalam | Contact: 9840219388 / 9789058088 🙏
-        </div>
-    </div>
 </header>
 
 <!-- HERO -->
@@ -320,43 +283,6 @@
     <h1 data-key="temple-name">Sri Ananda Sai Dhyana Mandapam</h1>
     <p class="hero-sub" data-key="temple-loc">Poonthandalam, Chennai – 600069</p>
     <div class="tagline" data-key="tagline">Sabka Malik Ek</div>
-</section>
-
-<!-- UPCOMING EVENTS -->
-<section id="events" style="background:#fcf1d8;">
-    <h2 class="section-title">Upcoming Event</h2>
-    <div class="pdf-wrap">
-        <div class="pdf-header">
-            🪔 அருள்மிகு ஸ்ரீ ஆனந்தசாயி புணரா வர்த்தன ஜீர்ணோத்தாரண அஷ்ட பந்தன மஹா கும்பாபிஷேகம்<br>
-            <span style="font-family:'Lato',sans-serif;font-size:0.82rem;opacity:0.9;">Sri Ananda Sai Punara Vardhana Jeernodhaarana Ashta Bandana Maha Kumbabishekam &nbsp;|&nbsp; 19 – 21 June 2026</span>
-        </div>
-
-        <!-- Desktop: inline PDF viewer -->
-        <iframe class="pdf-iframe" src="images/SRI SAI INVITATION.pdf" title="Maha Kumbabishekam Invitation"></iframe>
-
-        <!-- Mobile: tap buttons -->
-        <div class="pdf-mobile-btns">
-            <i class="fas fa-file-pdf" style="font-size:4.5rem;color:var(--saffron);opacity:0.6;"></i>
-            <p style="font-size:0.88rem;color:#666;text-align:center;line-height:1.7;">
-                Tap below to view or download<br>the Maha Kumbabishekam invitation
-            </p>
-            <a href="images/SRI SAI INVITATION.pdf" target="_blank"
-               style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 0;width:100%;max-width:340px;background:linear-gradient(135deg,var(--saffron),var(--deep-orange));color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.95rem;">
-                <i class="fas fa-eye"></i> Open Invitation
-            </a>
-            <a href="images/SRI SAI INVITATION.pdf" download
-               style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 0;width:100%;max-width:340px;background:white;color:var(--deep-orange);border:2px solid var(--saffron);border-radius:50px;text-decoration:none;font-weight:700;font-size:0.95rem;">
-                <i class="fas fa-download"></i> Download PDF
-            </a>
-        </div>
-
-        <div class="pdf-footer">
-            <a href="images/SRI SAI INVITATION.pdf" download
-               style="display:inline-flex;align-items:center;gap:7px;padding:8px 22px;background:linear-gradient(135deg,var(--saffron),var(--deep-orange));color:white;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.82rem;">
-                <i class="fas fa-download"></i> Download Invitation
-            </a>
-        </div>
-    </div>
 </section>
 
 <!-- ABOUT -->
@@ -742,7 +668,6 @@ document.addEventListener("keydown", e => { if(e.key==="Escape") closeLightbox()
 
 const translations = {
     en: {
-        "header-marquee":"🪔 UPCOMING EVENT: Sri Ananda Sai Punara Vardhana Jeernodhaarana Ashta Bandana Maha Kumbabishekam — 19, 20 & 21 June 2026 | Sri Ananda Sai Dhyana Mandapam, Poonthandalam | Contact: 9840219388 / 9789058088 🙏",
         "nav-home":"Home","nav-about":"History","nav-timings":"Timings","nav-festivals":"Festivals",
         "nav-services":"Services","nav-gallery":"Gallery","nav-appt":"Book Pooja",
         "nav-reach":"Reach Us","nav-contact":"Contact",
@@ -768,7 +693,6 @@ const translations = {
         "footer-sai":"Jai Sai Ram 🙏"
     },
     ta: {
-        "header-marquee":"🪔 வரவிருக்கும் நிகழ்ச்சி: ஸ்ரீ ஆனந்த சாய் புனரா வர்த்தன ஜீர்ணோத்தாரண அஷ்ட பந்தன மஹா கும்பாபிஷேகம் — 19, 20 & 21 ஜூன் 2026 | ஸ்ரீ ஆனந்த சாய் தியான மண்டபம், பூந்தண்டலம் | தொடர்பு: 9840219388 / 9789058088 🙏",
         "nav-home":"முகப்பு","nav-about":"வரலாறு","nav-timings":"நேரம்","nav-festivals":"திருவிழாக்கள்",
         "nav-services":"சேவைகள்","nav-gallery":"படங்கள்","nav-appt":"பூஜை பதிவு",
         "nav-reach":"வழித்தடம்","nav-contact":"தொடர்பு",
